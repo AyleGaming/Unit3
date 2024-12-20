@@ -12,6 +12,7 @@ public class DoorControl : MonoBehaviour
 //        door.SetActive(false);
     }
 
+    // Detect every frame in front of door
     private void OnTriggerStay(Collider other)
     {
         timer += Time.deltaTime;

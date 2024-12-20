@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: 0.25}
+  m_LocalPosition: {x: 0, y: 2.25, z: 0.324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -184,17 +184,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916977666375990499ddc96d768ff505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  playerLook: {fileID: 0}
+  playerShoot: {fileID: 0}
+  playerJump: {fileID: 0}
+  playerInteract: {fileID: 0}
   lookDirection: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  controller: {fileID: 747274783076335628}
-  head: {fileID: 330585545}
   mouseSensitivity: 150
-  movementSpeed: 0
-  gravityForce: 0
-  jumpForce: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1372730262938670520
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,8 +445,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4244896373916647846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.412, y: -0.256, z: 0.361}
-  m_LocalScale: {x: 0.06121332, y: 0.11686133, z: 0.7041}
+  m_LocalPosition: {x: 0.179, y: -0.204, z: 0.717}
+  m_LocalScale: {x: 0.06, y: 0.12, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 733479659840902733}
@@ -549,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 5755367731813425652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5866528478101634448}
