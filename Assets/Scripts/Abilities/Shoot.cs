@@ -9,10 +9,22 @@ public class Shoot : MonoBehaviour
     [SerializeField] private Rigidbody projectilePrefab;
     [SerializeField] private float shootingForce;
 
-    // Start is called before the first frame update
+    ObjectPooling objectPoolingCache;
+
+    private void Awake()
+    {
+        objectPoolingCache = FindObjectOfType<ObjectPooling>();
+    }
+
     public void ShootAbility()
     {
-        Rigidbody clonedRigidBody = Instantiate(projectilePrefab, weaponTip.position, weaponTip.rotation);
-        clonedRigidBody.AddForce(weaponTip.forward * shootingForce);
+        Rigidbody clonedRigidbody = objectPoolingCache.RetrieveAvailableBullet().GetRigidBody();
+
+        if (clonedRigidbody == null) return;
+
+        clonedRigidbody.position = weaponTip.position;
+        clonedRigidbody.rotation = weaponTip.rotation;
+
+        clonedRigidbody.AddForce(weaponTip.forward * shootingForce);
     }
 }

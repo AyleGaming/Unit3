@@ -6,26 +6,24 @@ public class Interact : MonoBehaviour
 {
     [SerializeField] private Transform interactionTip;
     [SerializeField] private LayerMask interactionFilter;
+    [SerializeField] private Grab grabAbility;
 
     public void InteractAbility()
     {
         Ray customRay = new Ray(interactionTip.position, interactionTip.forward);
         RaycastHit tempHit;
-        
-        if (Physics.Raycast(customRay, out tempHit, 5f, interactionFilter))
+
+        if (!Physics.Raycast(customRay, out tempHit, 5f, interactionFilter)) return;
+
+        IInteractable interactFeature = tempHit.collider.GetComponent<IInteractable>();
+
+        if(interactFeature != null)
         {
-            Debug.Log(tempHit.collider.name);
-
-            // Destroy what your attacking
-            Destroy(tempHit.collider.gameObject);
+            interactFeature.StartInteraction();
         }
-        else
+        else if (tempHit.rigidbody)
         {
-            Debug.Log("NO HIT");
+            grabAbility.PickUpObject(tempHit.rigidbody);
         }
-
-
-//        Debug.Log("Did I hit something? "+Physics.Raycast(customRay, 5f, interactionFilter));
-        Debug.DrawRay(interactionTip.position, interactionTip.forward * 5f, Color.green);
     }
 }

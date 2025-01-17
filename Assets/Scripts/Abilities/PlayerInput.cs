@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
+    // SINGLETON PATTERN
+    public static PlayerInput Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     [SerializeField] private Move playerMovement;
     [SerializeField] private Look playerLook;
@@ -12,13 +24,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Jump playerJump;
     [SerializeField] private Interact playerInteract;
 
-
     // Directional Inputs
     [SerializeField] private Vector2 lookDirection;
     
     [SerializeField] private float mouseSensitivity;
-    
-
 
     // Start is called before the first frame update
     void Start()
