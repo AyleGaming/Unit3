@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Shoot playerShoot;
     [SerializeField] private Jump playerJump;
     [SerializeField] private Interact playerInteract;
+    [SerializeField] private CommanderAbility commandAbility;
 
     // Directional Inputs
     [SerializeField] private Vector2 lookDirection;
@@ -77,6 +78,11 @@ public class PlayerInput : MonoBehaviour
         if(playerInteract && Input.GetKeyDown(KeyCode.F))
         {
             playerInteract.InteractAbility();
+        }
+
+        if(commandAbility && Input.GetMouseButtonDown(1))
+        {
+            commandAbility.Command();
         }
 
     }

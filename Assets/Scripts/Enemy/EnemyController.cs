@@ -16,11 +16,16 @@ public class EnemyController : MonoBehaviour
 
     public Transform _player;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         _agent= GetComponent<NavMeshAgent>();
         _currentState = new EnemyIdleState(this);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         _currentState.OnStateEnter();
     }
 
@@ -42,7 +47,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_enemyEye.position, _checkRadius);
         Gizmos.DrawWireSphere( _enemyEye.position + _enemyEye.forward * _playerCheckDistance, _checkRadius);
-
         Gizmos.DrawLine(_enemyEye.position, _enemyEye.position + _enemyEye.forward * _playerCheckDistance);
     }
 }
