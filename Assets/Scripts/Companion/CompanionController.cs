@@ -17,8 +17,6 @@ public class CompanionController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Commands in Q: " + commandQueue.Count);
-
         if (currentCommand != null && !currentCommand.IsCommandComplete()) return;
         if (commandQueue.Count == 0) return;
 

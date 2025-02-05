@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);
+//        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);
     }
 
     public void StartGame()
