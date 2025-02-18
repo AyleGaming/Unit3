@@ -12,26 +12,34 @@ public class PressurePlate : MonoBehaviour, IPuzzlePiece
     public UnityEvent OnPressureExit = new UnityEvent();
 
     private bool isPressed;
+    private int totalObjectsRequiredToOpen;
+    private int totalObjectsOnPressurePad = 0;
 
     private void OnTriggerEnter(Collider other)
     {
+        totalObjectsRequiredToOpen = correctRigidBodies.Length;
+        
         foreach (Rigidbody rb in correctRigidBodies)
         {
-            if (unlockWithAnyObject || rb == other.attachedRigidbody)
+            if(rb == other.attachedRigidbody)
             {
-                OnPressureStart.Invoke();
-                isPressed = true;
-                return;
+                totalObjectsOnPressurePad++;
             }
         }
+        Debug.Log("TotalObj: " + totalObjectsOnPressurePad + " Req: " + totalObjectsRequiredToOpen);
 
+        if (unlockWithAnyObject || totalObjectsOnPressurePad == totalObjectsRequiredToOpen)
+        {
+            OnPressureStart.Invoke();
+            isPressed = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         foreach (Rigidbody rb in correctRigidBodies)
         {
-            if (unlockWithAnyObject || rb == other.attachedRigidbody)
+            if (rb == other.attachedRigidbody)
             {
                 OnPressureExit.Invoke();
                 isPressed = false;

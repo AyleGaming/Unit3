@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PooledObject : MonoBehaviour
 {
-    [SerializeField] private float timeToReset = 15f;
+    [SerializeField] private float timeToReset = 5f;
     [SerializeField] private float currentTimer = 0;
 
     [SerializeField] private Rigidbody bulletRigidbody;

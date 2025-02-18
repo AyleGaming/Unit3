@@ -14,6 +14,7 @@ public abstract class Puzzle : MonoBehaviour
     }
 
     public UnityEvent OnPuzzleCompleted;
+    public UnityEvent OnPuzzleIncompleted;
 
     public bool isPuzzleComplete;
 

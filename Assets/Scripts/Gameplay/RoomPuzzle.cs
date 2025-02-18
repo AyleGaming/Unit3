@@ -19,6 +19,11 @@ public class RoomPuzzle : Puzzle
         {
             if (!piece.IsCorrect())
             {
+                if(isPuzzleComplete == true)
+                {
+                    isPuzzleComplete = false;
+                    OnPuzzleIncompleted?.Invoke();
+                }
                 return false;
             }
         }

@@ -1626,12 +1626,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7af820818d62a4cb1b496e5f5571e3, type: 3}
---- !u!4 &1170581226 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5978473026099783949, guid: 15a70bb6e0b2a481bade6118cc386a75,
-    type: 3}
-  m_PrefabInstance: {fileID: 1438363692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1274699119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7787350262146545549, guid: 7e7af820818d62a4cb1b496e5f5571e3,
@@ -1800,7 +1794,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1892,7 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretLaser: {fileID: 1438363696}
-  laserWeaponTip: {fileID: 1170581226}
+  laserWeaponTip: {fileID: 1318752265}
   laserLength: 15
   laserIdleColor: {r: 0, g: 1, b: 0, a: 1}
   laserAttackColor: {r: 1, g: 0, b: 0, a: 1}
@@ -1963,7 +1957,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e73c2e4257d07bd41ab59cbcd888087b, type: 2}
+  - {fileID: 2100000, guid: 5c8bbf3ba70fda14faf9a03946917675, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

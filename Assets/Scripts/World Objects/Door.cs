@@ -31,13 +31,26 @@ public class Door : MonoBehaviour
         }
     }
 
+    public void ToggleDoor()
+    {
+        if(isOpen == true)
+        {
+            CloseDoor();
+        } else
+        {
+            OpenDoor();
+        }
+    }
+
     public void OpenDoor()
     {
+        Debug.Log("OpenDOOR:" + transform.name);
         isOpen = true;
     }
 
     public void CloseDoor()
     {
+        Debug.Log("CloseDOOR:" + transform.name);
         isOpen = false;
     }
 }
