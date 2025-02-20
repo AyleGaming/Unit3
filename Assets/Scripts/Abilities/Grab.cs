@@ -24,8 +24,6 @@ public class Grab : MonoBehaviour
             objectToGrab.drag = 10;
             objectToGrab.transform.position = grabHand.position;
             
-
-
             //  objectToGrab.isKinematic = true;
             // objectToGrab.transform.SetParent(grabHand, true);
         }
@@ -45,7 +43,7 @@ public class Grab : MonoBehaviour
 
     private void Update()
     {
-        if(objectGrabbed != null && Vector3.Distance(grabHand.position, objectGrabbed.transform.position) > 0.1f)
+        if(objectGrabbed != null && Vector3.Distance(grabHand.position, objectGrabbed.transform.position) > 0.01f)
         {
             MoveObject();
         }

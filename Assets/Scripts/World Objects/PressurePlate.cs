@@ -26,6 +26,7 @@ public class PressurePlate : MonoBehaviour, IPuzzlePiece
                 totalObjectsOnPressurePad++;
             }
         }
+        Debug.Log("other: " + other);
         Debug.Log("TotalObj: " + totalObjectsOnPressurePad + " Req: " + totalObjectsRequiredToOpen);
 
         if (unlockWithAnyObject || totalObjectsOnPressurePad == totalObjectsRequiredToOpen)
