@@ -14,17 +14,13 @@ public class Attack : MonoBehaviour
     private float _attackTimer;
     private HealthSystem _targetToAttack;
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        _attackTimer += Time.deltaTime;
+
         if (_isAttacking)
         {
-            _attackTimer += Time.deltaTime;
             if(_attackTimer >= _attackCooldown)
             {
                 AttackAbility();
@@ -36,13 +32,11 @@ public class Attack : MonoBehaviour
     public void StartAttack(Transform target)
     {
         _targetToAttack = target.GetComponent<HealthSystem>();
-        Debug.Log("START Attack by State");
         _isAttacking = true;
     }
 
     public void StopAttack()
     {
-        Debug.Log("STOP Attack by State");
         _isAttacking = false;
     }
 
@@ -52,6 +46,5 @@ public class Attack : MonoBehaviour
         {
             _targetToAttack.DecreaseHealth(_damageToGive);
         }
-
     }
 }

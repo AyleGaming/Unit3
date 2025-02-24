@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Target : MonoBehaviour, IPuzzlePiece
+public class Target : MonoBehaviour, IPuzzlePiece, IStatusChangeable
 {
     public UnityEvent TargetHit = new UnityEvent();
-    private bool targetActive = false;
+    [SerializeField] private bool isActiveStatus = false;
 
-    public Color whiteColor = Color.white;
-    public Color blackColor = Color.black;
+    private Color blackColor = Color.black;
+    private Color yellowColor = Color.yellow;
+    private Color blueColor = Color.blue;
+    private Color redColor = Color.red;
 
-    public Color yellowColor = Color.yellow;
-    public Color blueColor = Color.blue;
-    public Color redColor = Color.red;
+    [SerializeField] private Color borderColor;
+    [SerializeField] private Colors targetColor;
 
-    [SerializeField] private Color borderColor; 
 
     public bool IsCorrect()
     {
-        return targetActive;
+        return isActiveStatus;
     }
 
     public void LinkToPuzzle(Puzzle p)
@@ -29,6 +29,7 @@ public class Target : MonoBehaviour, IPuzzlePiece
     private void Start()
     {
         SetTargetColor();
+        StatusManager.Instance?.RegisterStatusChangeable(this, targetColor);
     }
 
     private void SetTargetColor()
@@ -36,43 +37,39 @@ public class Target : MonoBehaviour, IPuzzlePiece
         Transform border = transform.GetChild(0); // First child is border which will have a color
         Renderer borderRenderer = border.GetComponent<Renderer>();
 
-       
-
-
-
         if (borderRenderer != null)
         {
             borderColor = borderRenderer.material.color;
-            Debug.Log(borderColor);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Collision!!");
-        // make sure npcs dont pick up key
-        if (other.CompareTag("Bullet"))
+        // Only allow bullet to trigger target activation
+        if (collider.CompareTag("Bullet"))
         {
-            ToggleTarget();
+            ToggleTarget(!isActiveStatus);
             TargetHit.Invoke();
-            Destroy(other.gameObject);
-            Debug.Log("Target hit!");
+            Destroy(collider.gameObject); // remove bullet so it doesn't hit other targets on riccochet
         }
     }
 
-    public void ToggleTarget()
+    public void ToggleTarget(bool status)
     {
-        if (targetActive == false)
+        SetStatus(status);
+
+        // set global color value
+        if (status)
         {
-            targetActive = true;
+            StatusManager.Instance.ActivateColor(targetColor);
         }
         else
         {
-            targetActive = false;
+            StatusManager.Instance.DeactivateColor(targetColor);
         }
-        ChangeRingColors();
     }
 
+    // Update color visual on target
     private void ChangeRingColors()
     {
         foreach (Transform child in transform)
@@ -88,13 +85,13 @@ public class Target : MonoBehaviour, IPuzzlePiece
                 }
                 else if (IsColorMatch(currentColor, blackColor))
                 {
-                    renderer.material.color = GetSwapColorFromBorder();
+                    renderer.material.color = SwapTargetColors();
                 }
             }
         }
     }
 
-    private Color GetSwapColorFromBorder()
+    private Color SwapTargetColors()
     {
         if (IsColorMatch(borderColor, yellowColor))
             return yellowColor;
@@ -106,8 +103,20 @@ public class Target : MonoBehaviour, IPuzzlePiece
         return borderColor;
     }
 
+    // Checks colors and determines what color it is
     private bool IsColorMatch(Color a, Color b)
     {
         return Mathf.Approximately(a.r, b.r) && Mathf.Approximately(a.g, b.g) && Mathf.Approximately(a.b, b.b);
+    }
+
+    public void SetStatus(bool status)
+    {
+        isActiveStatus = status;
+        ChangeRingColors();
+    }
+
+    public bool GetStatus()
+    {
+        return isActiveStatus;
     }
 }

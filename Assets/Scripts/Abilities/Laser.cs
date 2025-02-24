@@ -13,18 +13,23 @@ public class Laser : MonoBehaviour
 
     void Awake()
     {
-        // set base position
-        turretLaser.SetPosition(0, laserWeaponTip.position);
-        // draw laser to laser length
-        DrawLaser();
         // set color to green
         SetLaserColor(laserIdleColor);
+        DrawLaser();
+    }
+
+    private void Update()
+    {
+        // draw laser to laser length
+        DrawLaser();
     }
 
     public void DrawLaser()
     {
+        // set base position
+        turretLaser.SetPosition(0, laserWeaponTip.position);
         // draw endpoint from weapon tip forward multiplied by laser length
-        turretLaser.SetPosition(1, laserWeaponTip.position + laserWeaponTip.forward * 15f);
+        turretLaser.SetPosition(1, laserWeaponTip.position + laserWeaponTip.forward * laserLength);
     }
 
     public void DrawLaserToHitPoint(Vector3 laserHitPoint)
@@ -46,6 +51,7 @@ public class Laser : MonoBehaviour
         // Check if ray hits something in range of laser length 
         if (Physics.Raycast(laserRay, out RaycastHit laserRayHit, laserLength))
         {
+
             // Laser hit player
             if (laserRayHit.transform.CompareTag("Player"))
             {

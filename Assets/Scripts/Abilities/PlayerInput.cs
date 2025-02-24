@@ -64,7 +64,8 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Shoot gun
-        if (playerShoot != null && Input.GetMouseButtonDown(0))
+        bool isBlasterActive = GetComponent<PlayerController>().isBlasterActive;
+        if (isBlasterActive && playerShoot != null && Input.GetMouseButtonDown(0))
         {
             playerShoot.ShootAbility();
         }
@@ -86,7 +87,6 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
-
     private void OnDrawGizmos()
     {
         // draw sphere on feet of player (0,0,0)

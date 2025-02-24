@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IStatusChangeable
 {
     [SerializeField] private PhysicalButton doorButton;
     [SerializeField] private Vector3 openOffset;
     [SerializeField] private float doorSpeed;
     private Vector3 closedPosition;
-    private bool isOpen = false;
+    [SerializeField] private bool isActiveStatus = false;
+    [SerializeField] private Colors doorColor;
 
     // Start is called before the first frame update
     void Start()
     {
         closedPosition = transform.position;
         if(doorButton != null) doorButton.OnPressed += OpenDoor;
+        StatusManager.Instance?.RegisterStatusChangeable(this, doorColor);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isOpen)
+        if (isActiveStatus)
         {
             Vector3 targetPosition = closedPosition + openOffset;
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * doorSpeed);
@@ -33,7 +36,7 @@ public class Door : MonoBehaviour
 
     public void ToggleDoor()
     {
-        if(isOpen == true)
+        if(isActiveStatus == false)
         {
             CloseDoor();
         } else
@@ -44,13 +47,21 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
-        Debug.Log("OpenDOOR:" + transform.name);
-        isOpen = true;
+        isActiveStatus = true;
     }
 
     public void CloseDoor()
     {
-        Debug.Log("CloseDOOR:" + transform.name);
-        isOpen = false;
+        isActiveStatus = false;
     }
+
+    public void SetStatus(bool status)
+    {
+        isActiveStatus = status;
+    }
+    public bool GetStatus()
+    {
+        return isActiveStatus;
+    }
+
 }

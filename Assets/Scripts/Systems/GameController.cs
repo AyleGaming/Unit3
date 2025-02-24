@@ -12,6 +12,14 @@ public class GameController : MonoBehaviour
 
     private Puzzle currentPuzzle;
 
+    [SerializeField] private bool yellowActive;
+    [SerializeField] private bool redActive;
+    [SerializeField] private bool blueActive;
+
+    [SerializeField] private bool greenActive;
+    [SerializeField] private bool purpleActive;
+    [SerializeField] private bool orangeActive;
+
     private void Start()
     {
 //        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);

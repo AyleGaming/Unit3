@@ -17,13 +17,19 @@ public class Interact : MonoBehaviour
 
         IInteractable interactFeature = tempHit.collider.GetComponent<IInteractable>();
 
-        if(interactFeature != null)
+        if (interactFeature != null)
         {
             interactFeature.StartInteraction();
         }
-        else if (tempHit.rigidbody)
+        else if (tempHit.rigidbody && !tempHit.rigidbody.gameObject.CompareTag("Player"))
         {
             grabAbility.PickUpObject(tempHit.rigidbody);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white; // Set line color
+        Gizmos.DrawLine(interactionTip.position, interactionTip.position + interactionTip.forward * 5f); // Draw line
     }
 }

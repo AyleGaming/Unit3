@@ -13,12 +13,10 @@ public class TurretIdleState : TurretState
 
     public override void OnStateEnter()
     {
-        Debug.Log("ENTER idle state");
     }
 
     public override void OnStateExit()
     {
-        Debug.Log("EXIT idle state");
     }
 
     public override void OnStateUpdate()

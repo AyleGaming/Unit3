@@ -11,6 +11,7 @@ public class Grab : MonoBehaviour
     // Start is called before the first frame update
     public void PickUpObject(Rigidbody objectToGrab)
     {
+
         if(objectGrabbed != null)
         {
             DropDownObject();
@@ -23,9 +24,6 @@ public class Grab : MonoBehaviour
             objectToGrab.useGravity = false;
             objectToGrab.drag = 10;
             objectToGrab.transform.position = grabHand.position;
-            
-            //  objectToGrab.isKinematic = true;
-            // objectToGrab.transform.SetParent(grabHand, true);
         }
     }
 
@@ -36,9 +34,6 @@ public class Grab : MonoBehaviour
         objectGrabbed.drag = 0;
         objectGrabbed.drag = 0;
         objectGrabbed = null;
-
-  //      objectGrabbed.isKinematic = false;
-//        objectGrabbed.transform.SetParent(null);
     }
 
     private void Update()

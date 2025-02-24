@@ -25,7 +25,12 @@ PrefabInstance:
     - target: {fileID: 4276793223505864314, guid: 7e7af820818d62a4cb1b496e5f5571e3,
         type: 3}
       propertyPath: m_Name
-      value: Puzzle Piece
+      value: Puzzle Piece Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276793223505864314, guid: 7e7af820818d62a4cb1b496e5f5571e3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7787350262146545549, guid: 7e7af820818d62a4cb1b496e5f5571e3,
         type: 3}

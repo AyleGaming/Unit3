@@ -15,7 +15,6 @@ public class TurretAttackState : TurretState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Attack player!");
         if (_attackAbility != null)
         {
             _attackAbility.StartAttack(_turret._player);
@@ -24,7 +23,6 @@ public class TurretAttackState : TurretState
 
     public override void OnStateExit()
     {
-        Debug.Log("Enemy Will stop Attacking player");
         if (_attackAbility != null)
         {
             _attackAbility.StopAttack();
