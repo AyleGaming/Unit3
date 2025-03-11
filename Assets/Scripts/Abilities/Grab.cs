@@ -7,6 +7,8 @@ public class Grab : MonoBehaviour
     [SerializeField] private Transform grabHand;
     [SerializeField] private float syncStrength;
     private Rigidbody objectGrabbed;
+    [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip dropSound;
 
     // Start is called before the first frame update
     public void PickUpObject(Rigidbody objectToGrab)
@@ -15,6 +17,10 @@ public class Grab : MonoBehaviour
         if(objectGrabbed != null)
         {
             DropDownObject();
+            if (dropSound != null)
+            {
+                AudioManager.Instance.PlaySound(dropSound);
+            }
             return;
         }
 
@@ -24,6 +30,10 @@ public class Grab : MonoBehaviour
             objectToGrab.useGravity = false;
             objectToGrab.drag = 10;
             objectToGrab.transform.position = grabHand.position;
+            if (pickUpSound != null)
+            {
+                AudioManager.Instance.PlaySound(pickUpSound);
+            }
         }
     }
 

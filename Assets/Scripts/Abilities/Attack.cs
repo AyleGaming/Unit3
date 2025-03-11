@@ -9,6 +9,7 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private float _damageToGive;
     [SerializeField] private float _attackCooldown;
+    [SerializeField] private AudioClip attackSound;
 
     private bool _isAttacking;
     private float _attackTimer;
@@ -45,6 +46,10 @@ public class Attack : MonoBehaviour
         if (_targetToAttack)
         {
             _targetToAttack.DecreaseHealth(_damageToGive);
+            if (attackSound != null)
+            {
+                AudioManager.Instance.PlaySound(attackSound);
+            }
         }
     }
 }

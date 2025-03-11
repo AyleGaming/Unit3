@@ -15,6 +15,7 @@ public class Target : MonoBehaviour, IPuzzlePiece, IStatusChangeable
 
     [SerializeField] private Color borderColor;
     [SerializeField] private Colors targetColor;
+    [SerializeField] private AudioClip targetHitSound;
 
 
     public bool IsCorrect()
@@ -48,6 +49,10 @@ public class Target : MonoBehaviour, IPuzzlePiece, IStatusChangeable
         // Only allow bullet to trigger target activation
         if (collider.CompareTag("Bullet"))
         {
+            if (targetHitSound != null)
+            {
+                AudioManager.Instance.PlaySound(targetHitSound);
+            }
             ToggleTarget(!isActiveStatus);
             TargetHit.Invoke();
             Destroy(collider.gameObject); // remove bullet so it doesn't hit other targets on riccochet

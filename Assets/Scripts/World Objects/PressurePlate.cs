@@ -7,6 +7,7 @@ public class PressurePlate : MonoBehaviour, IPuzzlePiece
 {
     [SerializeField] private bool unlockWithAnyObject;
     [SerializeField] private Rigidbody[] correctRigidBodies;
+    [SerializeField] private AudioClip activationSound;
 
     public UnityEvent OnPressureStart = new UnityEvent();
     public UnityEvent OnPressureExit = new UnityEvent();
@@ -29,6 +30,10 @@ public class PressurePlate : MonoBehaviour, IPuzzlePiece
 
         if (unlockWithAnyObject || totalObjectsOnPressurePad == totalObjectsRequiredToOpen)
         {
+            if (activationSound != null && isPressed == false)
+            {
+                AudioManager.Instance.PlaySound(activationSound);
+            }
             OnPressureStart.Invoke();
             isPressed = true;
         }

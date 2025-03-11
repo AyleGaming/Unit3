@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     private HealthSystem playerHealth;
     [SerializeField] private TextMeshProUGUI healthText;
 
+    private TreeOfLife treeOfLife;
     private StatusManager statusManager;
     [SerializeField] private Image yellowImage;
     [SerializeField] private Image redImage;
@@ -16,6 +17,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image orangeImage;
     [SerializeField] private Image greenImage;
     [SerializeField] private Image purpleImage;
+
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject liveScreen;
+    [SerializeField] private TextMeshProUGUI endScreenText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +31,25 @@ public class UIController : MonoBehaviour
 
         statusManager = StatusManager.Instance;
         statusManager.OnColorsChange += UpdateColors;
+
+        treeOfLife = TreeOfLife.Instance;
+        treeOfLife.OnGameOver += UpdateGameOverScreen;
    }
 
     void DisplayDeathScreen()
     {
+        liveScreen.SetActive(false);
+        deathScreen.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
+    void UpdateGameOverScreen()
+    {
+        liveScreen.SetActive(false);
+        endScreenText.text = "SUCCESS!";
+        deathScreen.SetActive(true);
     }
 
     void UpdateHealthText(float healthToDisplay)
@@ -71,6 +90,5 @@ public class UIController : MonoBehaviour
         {
             purpleImage.gameObject.SetActive(false);
         }
-
     }
 }

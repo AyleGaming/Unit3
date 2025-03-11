@@ -6,16 +6,12 @@ using System;
 public class StatusManager : MonoBehaviour
 {
     public static StatusManager Instance { get; private set; }
-   
+    
     // Stores colors set when targets are hit
     private HashSet<Colors> activeColors = new();
-
     // track changeable gameobjects status by color
     private Dictionary<Colors, List<IStatusChangeable>> statusChangeables = new();
-
-
     public Action OnColorsChange;
-
 
     private void Awake()
     {
@@ -125,9 +121,6 @@ public class StatusManager : MonoBehaviour
         {
             foreach (var statusChangeable in changeAbles)
             {
-
-                Debug.Log(statusChangeable + ": " + statusChangeable.GetStatus()+""+status);
-
                 // if status does not match update target
                 if(statusChangeable.GetStatus() != status)
                 {
@@ -138,7 +131,5 @@ public class StatusManager : MonoBehaviour
     }
 
     public bool IsColorActive(Colors color) => activeColors.Contains(color);
-
-    public HashSet<Colors> GetActiveColors() => activeColors;
 
 }

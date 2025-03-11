@@ -10,6 +10,8 @@ public class Door : MonoBehaviour, IStatusChangeable
     private Vector3 closedPosition;
     [SerializeField] private bool isActiveStatus = false;
     [SerializeField] private Colors doorColor;
+    [SerializeField] private AudioClip doorSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,10 @@ public class Door : MonoBehaviour, IStatusChangeable
 
     public void OpenDoor()
     {
+        if (doorSound != null && isActiveStatus == false)
+        {
+            AudioManager.Instance.PlaySound(doorSound);
+        }
         isActiveStatus = true;
     }
 

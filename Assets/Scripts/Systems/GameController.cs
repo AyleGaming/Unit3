@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class GameController : MonoBehaviour
     public UnityEvent OnFinalPuzzleCompleted = new UnityEvent();
 
     [SerializeField] private Puzzle finalPuzzle;
-
-    private Puzzle currentPuzzle;
 
     [SerializeField] private bool yellowActive;
     [SerializeField] private bool redActive;
@@ -20,19 +19,22 @@ public class GameController : MonoBehaviour
     [SerializeField] private bool purpleActive;
     [SerializeField] private bool orangeActive;
 
+    [SerializeField] private AudioClip backgroundMusic;
+
     private void Start()
     {
-//        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);
+        //        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);
+        if (backgroundMusic != null)
+        {
+            AudioManager.Instance.PlayMusic(backgroundMusic, 0.5f);
+        }
     }
 
-    public void StartGame()
+    public void RestartGame()
     {
-
-    }
-
-    public void GameCompleted()
-    {
-        OnFinalPuzzleCompleted.Invoke();
+        // Reload the current scene
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
