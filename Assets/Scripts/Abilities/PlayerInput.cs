@@ -26,7 +26,6 @@ public class PlayerInput : MonoBehaviour
 
     // Directional Inputs
     [SerializeField] private Vector2 lookDirection;
-    
     [SerializeField] private float mouseSensitivity;
 
     // Start is called before the first frame update

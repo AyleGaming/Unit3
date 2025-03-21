@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject liveScreen;
+    [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private TextMeshProUGUI endScreenText;
 
     // Start is called before the first frame update
@@ -48,8 +49,10 @@ public class UIController : MonoBehaviour
     void UpdateGameOverScreen()
     {
         liveScreen.SetActive(false);
-        endScreenText.text = "SUCCESS!";
-        deathScreen.SetActive(true);
+        gameOverScreen.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     void UpdateHealthText(float healthToDisplay)
