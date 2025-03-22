@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: 0.324}
+  m_LocalPosition: {x: 0, y: 1.582, z: 0.615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,14 +143,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784598808051575797}
-  m_LocalRotation: {x: -0, y: 0.087467514, z: -0, w: 0.9961674}
-  m_LocalPosition: {x: 0.002, y: -0.478, z: 0.896}
+  m_LocalRotation: {x: -0, y: 0.0073813, z: -0, w: 0.99997276}
+  m_LocalPosition: {x: -0.031, y: -0.47800064, z: 0.655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 330585546}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 10.036, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.846, z: 0}
 --- !u!1 &1035858252708885395
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 1035858253080492475}
   - component: {fileID: 4654969374706543744}
   - component: {fileID: 1035858253080492483}
-  - component: {fileID: 1035858253080492484}
   - component: {fileID: 2102406849}
   m_Layer: 3
   m_Name: Player
@@ -189,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 1035858252708885395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5866528478101634448}
@@ -249,9 +248,8 @@ MonoBehaviour:
   playerShoot: {fileID: 1035858253080492469}
   playerJump: {fileID: 1035858253080492473}
   playerInteract: {fileID: 1035858253080492475}
-  commandAbility: {fileID: 1035858253080492484}
   lookDirection: {x: 0, y: 0}
-  mouseSensitivity: 800
+  mouseSensitivity: 100
 --- !u!114 &1035858253080492467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,24 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!114 &1035858253080492484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035858252708885395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88d52fb992917d429f020047da31a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compatibleWithCommands:
-    serializedVersion: 2
-    m_Bits: 0
-  companion: {fileID: 0}
-  waypointPrefab: {fileID: 2571579769559805756, guid: 4061e9fc4fdd9354987b6e85284969f1,
-    type: 3}
 --- !u!114 &2102406849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4721970959162040798
 Transform:
   m_ObjectHideFlags: 0
@@ -561,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4244896373916647846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.427, y: -0.157, z: 0.651}
+  m_LocalPosition: {x: 0.427, y: -0.157, z: 0.475}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
