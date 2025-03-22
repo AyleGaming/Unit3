@@ -7,11 +7,11 @@ public class Door : MonoBehaviour, IStatusChangeable
     [SerializeField] private PhysicalButton doorButton;
     [SerializeField] private Vector3 openOffset;
     [SerializeField] private float doorSpeed;
-    private Vector3 closedPosition;
     [SerializeField] private bool isActiveStatus = false;
     [SerializeField] private Colors doorColor;
     [SerializeField] private AudioClip doorSound;
 
+    private Vector3 closedPosition;
 
     // Start is called before the first frame update
     void Start()

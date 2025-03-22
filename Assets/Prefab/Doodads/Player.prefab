@@ -143,14 +143,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784598808051575797}
-  m_LocalRotation: {x: -0, y: 0.0073813, z: -0, w: 0.99997276}
-  m_LocalPosition: {x: -0.031, y: -0.47800064, z: 0.655}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: -0.031000137, y: -0.47799993, z: 0.655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 330585546}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0.846, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!1 &1035858252708885395
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,14 +407,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147069704808420298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.013087967, y: -0.015705956, z: -0.000205602, w: 0.99979097}
   m_LocalPosition: {x: 0, y: 0, z: 0.5576}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4721970959162040798}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.5, y: -1.8, z: 0}
 --- !u!1 &2325803988598651436
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +777,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot Good
       objectReference: {fileID: 0}
+    - target: {fileID: 7194815415397853465, guid: 42aea0dd8b83c3a4cb70187f6b0d2d5d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e8bebf116299f54c89c413ffc32e5ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42aea0dd8b83c3a4cb70187f6b0d2d5d, type: 3}
 --- !u!4 &1174602737065170697 stripped
@@ -862,6 +867,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7583538b80acc4e54a28483671149811,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 751b469de811b4c4ebbb5e7e64bd529f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 7583538b80acc4e54a28483671149811,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc8db6f35ed01ca4db6c4182be4272df, type: 2}
     - target: {fileID: 919132149155446097, guid: 7583538b80acc4e54a28483671149811,
         type: 3}
       propertyPath: m_Name

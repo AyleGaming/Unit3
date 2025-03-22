@@ -10,6 +10,14 @@ public class Interact : MonoBehaviour
 
     public void InteractAbility()
     {
+        // Drop object if have one already
+        bool hasObject = grabAbility.HasPickedUpObject();
+        if (hasObject == true)
+        {
+            grabAbility.DropDownObject();
+            return;
+        }
+
         Ray customRay = new Ray(interactionTip.position, interactionTip.forward);
         RaycastHit tempHit;
 

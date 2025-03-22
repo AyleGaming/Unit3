@@ -79,10 +79,5 @@ public class PlayerInput : MonoBehaviour
             playerInteract.InteractAbility();
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        // draw sphere on feet of player (0,0,0)
-        Gizmos.DrawSphere(transform.position, 0.1f);
-    }
+  
 }

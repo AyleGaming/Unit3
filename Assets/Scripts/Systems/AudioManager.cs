@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
     private AudioSource musicSource; // background music
 
-
     void Awake()
     {
         // Ensure only one instance exists
@@ -37,7 +36,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(AudioClip clip, float volume = 1f)
+    public void PlayMusic(AudioClip clip, float volume = 0.5f)
     {
         if (clip != null)
         {
