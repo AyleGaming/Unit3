@@ -8,7 +8,6 @@ public class Laser : MonoBehaviour
     [SerializeField] public Transform laserWeaponTip;
     [SerializeField] public float laserLength;
 
-
     public Color laserIdleColor = Color.green;
     public Color laserAttackColor = Color.red;
 

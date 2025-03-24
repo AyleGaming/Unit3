@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField] private AudioClip pickUpSound;
-
     public float floatSpeed = 1f;   // Speed of the bounce
     public float floatHeight = 0.5f; // Max height of the bounce
 
@@ -32,10 +30,7 @@ public class PickUp : MonoBehaviour
             if (player != null && player.blaster != null)
             {
                 player.blaster.SetActive(true); // Activate the player's blaster
-                if (pickUpSound != null)
-                {
-                    AudioManager.Instance.PlaySound(pickUpSound);
-                }
+                AudioManager.Instance.PlaySound(SoundType.BlasterPickup);
                 Destroy(gameObject); // Destroy the pickup
             }
         }

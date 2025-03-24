@@ -7,14 +7,12 @@ public class TreeOfLife : MonoBehaviour
 {
     public static TreeOfLife Instance { get; private set; }
 
-    [SerializeField] private AudioClip gameOverSound;
     public Action OnGameOver;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
     }
-
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -24,10 +22,7 @@ public class TreeOfLife : MonoBehaviour
 
             if (player != null)
             {
-                if (gameOverSound != null)
-                {
-                    AudioManager.Instance.PlaySound(gameOverSound);
-                }
+                AudioManager.Instance.PlaySound(SoundType.GameOverVictory);
                 OnGameOver?.Invoke();
                 Time.timeScale = 0f;
             }

@@ -6,36 +6,30 @@ using UnityEngine.Events;
 public class PressurePlate : MonoBehaviour, IPuzzlePiece
 {
     [SerializeField] private bool unlockWithAnyObject;
-    [SerializeField] private Rigidbody[] correctRigidBodies;
-    [SerializeField] private AudioClip activationSound;
+    [SerializeField] private List<Rigidbody> correctRigidBodies = new();
+    private bool isPressed;
 
     public UnityEvent OnPressureStart = new UnityEvent();
     public UnityEvent OnPressureExit = new UnityEvent();
 
-    private bool isPressed;
-    private int totalObjectsRequiredToOpen;
-    private int totalObjectsOnPressurePad = 0;
-
     private void OnTriggerEnter(Collider other)
     {
-        totalObjectsRequiredToOpen = correctRigidBodies.Length;
-        
-        foreach (Rigidbody rb in correctRigidBodies)
+        Rigidbody rb = other.attachedRigidbody;
+
+        if(rb != null && correctRigidBodies.Contains(rb))
         {
-            if(rb == other.attachedRigidbody)
-            {
-                totalObjectsOnPressurePad++;
-            }
+            correctRigidBodies.Remove(rb);
         }
 
-        if (unlockWithAnyObject || totalObjectsOnPressurePad == totalObjectsRequiredToOpen)
+        if(correctRigidBodies.Count == 0 || unlockWithAnyObject)
         {
-            if (activationSound != null && isPressed == false)
+            if (isPressed == false)
             {
-                AudioManager.Instance.PlaySound(activationSound);
+                AudioManager.Instance.PlaySound(SoundType.PuzzleSuccess);
             }
             OnPressureStart.Invoke();
             isPressed = true;
+            transform.gameObject.SetActive(false);
         }
     }
 

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IStatusChangeable
 {
-    [SerializeField] private PhysicalButton doorButton;
     [SerializeField] private Vector3 openOffset;
     [SerializeField] private float doorSpeed;
     [SerializeField] private bool isActiveStatus = false;
     [SerializeField] private Colors doorColor;
-    [SerializeField] private AudioClip doorSound;
 
     private Vector3 closedPosition;
 
@@ -17,9 +15,7 @@ public class Door : MonoBehaviour, IStatusChangeable
     void Start()
     {
         closedPosition = transform.position;
-        if(doorButton != null) doorButton.OnPressed += OpenDoor;
         StatusManager.Instance?.RegisterStatusChangeable(this, doorColor);
-
     }
 
     // Update is called once per frame
@@ -49,9 +45,9 @@ public class Door : MonoBehaviour, IStatusChangeable
 
     public void OpenDoor()
     {
-        if (doorSound != null && isActiveStatus == false)
+        if (isActiveStatus == false)
         {
-            AudioManager.Instance.PlaySound(doorSound);
+            AudioManager.Instance.PlaySound(SoundType.DoorOpen);
         }
         isActiveStatus = true;
     }

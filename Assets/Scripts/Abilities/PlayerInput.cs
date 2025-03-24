@@ -52,8 +52,8 @@ public class PlayerInput : MonoBehaviour
         // Look
         if (playerLook)
         {
-            lookDirection.x += Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
-            lookDirection.y += Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
+            lookDirection.x += Input.GetAxis("Mouse X") * Time.fixedDeltaTime * mouseSensitivity;
+            lookDirection.y += Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * mouseSensitivity;
             
             float angleOnY = lookDirection.y;
             lookDirection.y = Mathf.Clamp(angleOnY, -80, 80);

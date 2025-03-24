@@ -2065,6 +2065,13 @@ MonoBehaviour:
   yellowImage: {fileID: 0}
   redImage: {fileID: 0}
   blueImage: {fileID: 0}
+  orangeImage: {fileID: 0}
+  greenImage: {fileID: 0}
+  purpleImage: {fileID: 0}
+  deathScreen: {fileID: 0}
+  liveScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  endScreenText: {fileID: 0}
 --- !u!20 &1592760385 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 330585545, guid: 2311dd84ee8987844810430e6ce13844,

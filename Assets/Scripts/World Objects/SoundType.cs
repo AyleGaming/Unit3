@@ -1,0 +1,25 @@
+public enum SoundType
+{
+    Pickup,
+    Drop,
+    ShootBlaster,
+    LaserAttack,
+    PuzzleSuccess,
+    GameOverVictory,
+    TargetHit,
+    DoorOpen,
+    BarrierRemoved,
+    Active,
+    Deactivated,
+    WallsAndTraps,
+    BlasterPickup,
+    EnemyDestroyed,
+    Yellow,
+    Blue,
+    Red,
+    Green,
+    Orange,
+    Purple,
+    StartMuzak,
+    NULL
+}

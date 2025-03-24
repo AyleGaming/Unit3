@@ -19,15 +19,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private bool purpleActive;
     [SerializeField] private bool orangeActive;
 
-    [SerializeField] private AudioClip backgroundMusic;
-
     private void Start()
     {
         //        finalPuzzle.OnPuzzleCompleted.AddListener(GameCompleted);
-        if (backgroundMusic != null)
-        {
-            AudioManager.Instance.PlayMusic(backgroundMusic, 0.5f);
-        }
+        AudioManager.Instance.PlayMusic(SoundType.StartMuzak);
     }
 
     public void RestartGame()
@@ -36,5 +31,4 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
 }
