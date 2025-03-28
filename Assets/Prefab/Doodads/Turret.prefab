@@ -167,7 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageToGive: 5
   _attackCooldown: 0.1
-  attackSound: {fileID: 8300000, guid: df19a39d1701c1b49a256c2264d1eca8, type: 3}
 --- !u!114 &4787029194895480046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretLaser: {fileID: 4787029194895480047}
   laserWeaponTip: {fileID: 4787029195245647062}
-  laserLength: 100
+  laserLength: 50
   laserIdleColor: {r: 0, g: 1, b: 0, a: 1}
   laserAttackColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &2725019818324923449
@@ -368,7 +367,7 @@ AudioSource:
   Priority: 50
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 30
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 1

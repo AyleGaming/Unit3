@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image orangeImage;
     [SerializeField] private Image greenImage;
     [SerializeField] private Image purpleImage;
+
+    [SerializeField] private Slider healthSlider;  // Assign the prefab in Inspector
+    [SerializeField] private GameObject colorTextPrefab;  // Assign the prefab in Inspector
+    [SerializeField] private Transform colorListParent;   // Assign the UI panel where texts will go
 
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject liveScreen;
@@ -57,7 +62,36 @@ public class UIController : MonoBehaviour
 
     void UpdateHealthText(float healthToDisplay)
     {
-        healthText.text = "Health: " + healthToDisplay.ToString();
+        healthSlider.value = healthToDisplay;
+        healthText.text = healthToDisplay.ToString() + " / 100";
+    }
+
+    private void PopulateColorList()
+    {
+        // Clear any previous UI elements
+        foreach (Transform child in colorListParent)
+        {
+            if (!child.CompareTag("TargetUI"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (Colors color in Enum.GetValues(typeof(Colors)))
+        {
+            if (statusManager.IsColorActive(color))
+            {
+                // Instantiate a new UI Text object
+                GameObject colorTextObj = Instantiate(colorTextPrefab, colorListParent);
+
+                // Get the Text or TMP component
+                TextMeshProUGUI textComponent = colorTextObj.GetComponent<TextMeshProUGUI>();
+
+                // Set the text and color
+                textComponent.text = color.ToString();
+                textComponent.color = GetColorFromEnum(color);
+            }
+        }
     }
 
     void UpdateColors()
@@ -66,32 +100,24 @@ public class UIController : MonoBehaviour
         redImage.color = statusManager.IsColorActive(Colors.Red) ? Color.red : Color.gray;
         blueImage.color = statusManager.IsColorActive(Colors.Blue) ? Color.blue : Color.gray;
 
+        orangeImage.color = statusManager.IsColorActive(Colors.Orange) ? GetColorFromEnum(Colors.Orange) : Color.gray;
+        greenImage.color = statusManager.IsColorActive(Colors.Green) ? GetColorFromEnum(Colors.Green) : Color.gray;
+        purpleImage.color = statusManager.IsColorActive(Colors.Purple) ? GetColorFromEnum(Colors.Purple) : Color.gray;
 
-        if (statusManager.IsColorActive(Colors.Orange))
-        {
-            orangeImage.gameObject.SetActive(true);
-        } 
-        else
-        {
-            orangeImage.gameObject.SetActive(false);
-        }
+        PopulateColorList();
+    }
 
-        if (statusManager.IsColorActive(Colors.Green))
+    Color GetColorFromEnum(Colors color)
+    {
+        switch (color)
         {
-            greenImage.gameObject.SetActive(true);
-        }
-        else
-        {
-            greenImage.gameObject.SetActive(false);
-        }
-
-        if (statusManager.IsColorActive(Colors.Purple))
-        {
-            purpleImage.gameObject.SetActive(true);
-        }
-        else
-        {
-            purpleImage.gameObject.SetActive(false);
+            case Colors.Red: return Color.red;
+            case Colors.Yellow: return Color.yellow;
+            case Colors.Blue: return Color.blue;
+            case Colors.Green: return Color.green;
+            case Colors.Orange: return new Color(1.0f, 0.5f, 0.0f); // RGB for Orange
+            case Colors.Purple: return new Color(0.5f, 0.0f, 0.5f); // RGB for Purple
+            default: return Color.white;
         }
     }
 }

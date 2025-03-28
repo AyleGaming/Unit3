@@ -13,13 +13,11 @@ public class EnemyController : MonoBehaviour
     public float _checkRadius = 0.4f;
 
     public NavMeshAgent _agent;
-
     public Transform _player;
-
 
     private void Awake()
     {
-        _agent= GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
         _currentState = new EnemyIdleState(this);
     }
 

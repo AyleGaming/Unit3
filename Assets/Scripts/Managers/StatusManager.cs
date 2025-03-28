@@ -23,13 +23,15 @@ public class StatusManager : MonoBehaviour
         if (activeColors.Add(color)) // Only adds if not already in the set
         {
             SoundType colorSoundType = AudioManager.Instance.GetSoundTypeByColor(color);
-            AudioManager.Instance.PlaySoundsSequentially(colorSoundType, SoundType.WallsAndTraps, SoundType.Active);
+            AudioManager.Instance.PlaySoundsSequentially(colorSoundType);
             SetAllStatuses(color, true);
             // Set secondary colors only if called with primary color 
-            if (color == Colors.Yellow || color == Colors.Red || color == Colors.Blue)
+            if (activeColors.Count > 1 && (color == Colors.Yellow || color == Colors.Red || color == Colors.Blue))
             {
                 SetSecondaryColors();
+                return;
             }
+            AudioManager.Instance.PlaySoundsSequentially(SoundType.WallsAndTraps, SoundType.Active);
             OnColorsChange?.Invoke();
         }
     }
@@ -39,12 +41,14 @@ public class StatusManager : MonoBehaviour
         if (activeColors.Remove(color))
         {
             SoundType colorSoundType = AudioManager.Instance.GetSoundTypeByColor(color);
-            AudioManager.Instance.PlaySoundsSequentially(colorSoundType, SoundType.Deactivated);
+            AudioManager.Instance.PlaySoundsSequentially(colorSoundType);
             SetAllStatuses(color, false);
-            if (color == Colors.Yellow || color == Colors.Red || color == Colors.Blue)
+            if (activeColors.Count > 1 && (color == Colors.Yellow || color == Colors.Red || color == Colors.Blue))
             {
                 UnsetSecondaryColors(color);
+                return;
             }
+            AudioManager.Instance.PlaySoundsSequentially(SoundType.Deactivated);
             OnColorsChange?.Invoke();
         }
        

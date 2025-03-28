@@ -97,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 13.76, z: 0.75}
-  m_Center: {x: 0, y: 6.1, z: 0}
+  m_Size: {x: 0.9, y: 10, z: 0.9}
+  m_Center: {x: 0, y: 4.015667, z: 0}
 --- !u!114 &458694397453248479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,6 @@ MonoBehaviour:
   correctRigidBodies:
   - {fileID: 0}
   - {fileID: 0}
-  activationSound: {fileID: 8300000, guid: 5b07462289a4d1b4982eab95985e8ef5, type: 3}
   OnPressureStart:
     m_PersistentCalls:
       m_Calls:
