@@ -6,13 +6,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletDamage;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.transform);
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            HealthSystem enemyHealthSystem = collision.rigidbody.GetComponent<HealthSystem>();
+            HealthSystem enemyHealthSystem = collision.gameObject.GetComponent<HealthSystem>();
 
             if (enemyHealthSystem != null)
             {

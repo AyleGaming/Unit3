@@ -40,8 +40,9 @@ public class Laser : MonoBehaviour
 
     public void SetLaserColor(Color laserColor)
     {
-        turretLaser.startColor = laserColor;
-        turretLaser.endColor = laserColor;
+        Color transparentColor = new Color(laserColor.r, laserColor.g, laserColor.b, 0.5f);
+        turretLaser.startColor = transparentColor;
+        turretLaser.endColor = transparentColor;
     }
 
     public bool LaserCheckCollision()

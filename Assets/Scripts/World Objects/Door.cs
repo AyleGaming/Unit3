@@ -30,6 +30,9 @@ public class Door : MonoBehaviour, IStatusChangeable
         {
             transform.position = Vector3.Lerp(transform.position, closedPosition, Time.deltaTime * doorSpeed);
         }
+
+        // Move to method
+
     }
 
     public void ToggleDoor()

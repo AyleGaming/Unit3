@@ -34,6 +34,12 @@ public class Target : MonoBehaviour, IPuzzlePiece, IStatusChangeable
     private void SetTargetColor()
     {
         Transform border = transform.GetChild(0); // First child is border which will have a color
+
+/*
+
+    Make local variable
+
+ */
         Renderer borderRenderer = border.GetComponent<Renderer>();
 
         if (borderRenderer != null)
@@ -75,6 +81,14 @@ public class Target : MonoBehaviour, IPuzzlePiece, IStatusChangeable
     {
         foreach (Transform child in transform)
         {
+
+            /*
+
+                Make local variable
+
+             */
+
+
             Renderer renderer = child.GetComponent<Renderer>();
             if (renderer != null)
             {
